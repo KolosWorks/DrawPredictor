@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "KolosWorks.DrawPredicter.WebSite", "KolosWorks.DrawPredicter.WebSite\", "{0A12A4A8-70C8-4885-AE99-080C43E5947C}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_59999"
+		Debug.AspNetCompiler.PhysicalPath = "KolosWorks.DrawPredicter.WebSite\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_59999\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_59999"
+		Release.AspNetCompiler.PhysicalPath = "KolosWorks.DrawPredicter.WebSite\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_59999\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "59999"
+		SlnRelativePath = "KolosWorks.DrawPredicter.WebSite\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KolosWorks.DrawPredicter", "KolosWorks.DrawPredicter\KolosWorks.DrawPredicter.csproj", "{74F54778-C996-4C99-99FA-32C80A102329}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KolosWorks.Util", "..\..\Library\KolosWorks.Util\KolosWorks.Util.csproj", "{B30BE709-8C51-4ED7-8F8E-3C2F633D4FFB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0A12A4A8-70C8-4885-AE99-080C43E5947C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A12A4A8-70C8-4885-AE99-080C43E5947C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A12A4A8-70C8-4885-AE99-080C43E5947C}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A12A4A8-70C8-4885-AE99-080C43E5947C}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{74F54778-C996-4C99-99FA-32C80A102329}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74F54778-C996-4C99-99FA-32C80A102329}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74F54778-C996-4C99-99FA-32C80A102329}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74F54778-C996-4C99-99FA-32C80A102329}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B30BE709-8C51-4ED7-8F8E-3C2F633D4FFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B30BE709-8C51-4ED7-8F8E-3C2F633D4FFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B30BE709-8C51-4ED7-8F8E-3C2F633D4FFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B30BE709-8C51-4ED7-8F8E-3C2F633D4FFB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FF28CA3A-768E-48EF-985C-4D4A31D4379B}
+	EndGlobalSection
+EndGlobal
