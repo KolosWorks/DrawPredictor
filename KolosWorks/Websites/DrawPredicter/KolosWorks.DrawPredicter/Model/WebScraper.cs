@@ -32,6 +32,41 @@ namespace KolosWorks.DrawPredicter.Model
             return matchList;
         }
 
+        public async Task<List<Match>> GetMatchHrefs()
+        {
+            var httpClient = new HttpClient();
+            var html = await httpClient.GetStringAsync(fixturesUrl);
+
+            var htmlDocument = new HtmlDocument();
+            htmlDocument.LoadHtml(html);
+
+            var matchContainerDivs = htmlDocument.DocumentNode.Descendants("div")
+                .Where(node => node.GetAttributeValue("class", "")
+                .Equals("flc-match-item-inner")).ToList();
+
+            List<HtmlNode> matchHrefNodes = new List<HtmlNode>();
+            matchContainerDivs.ForEach(x => matchHrefNodes.Add(x.Descendants("a").First()));
+
+            DateTime ukDate = GetUKDate();
+
+            var matchHrefs = new List<Match>();
+            foreach (var matchContainerNode in matchContainerDivs)
+            {
+                var hrefString = matchContainerNode.Descendants("a").First().GetAttributeValue("href", string.Empty);
+                var dateString = hrefString.Substring(16, 10);
+                var matchDate = DateTime.Parse(dateString);
+
+                var dayDiff = Convert.ToByte((matchDate - ukDate).TotalDays);
+                if (dayDiff <= 14)
+                {
+                    var matchHref = new Match(hrefString, dateString, dayDiff);
+                    matchHrefs.Add(matchHref);
+                }
+            }
+
+            return matchHrefs;
+        }
+
         public async Task<Match> GetMatch(Match matchRef)
         {
             var httpClient = new HttpClient();
@@ -85,41 +120,6 @@ namespace KolosWorks.DrawPredicter.Model
             awayTeamDrawRate = headToHeadDiv.Descendants("span").ElementAt(1).GetDirectInnerText().Split('%')[0];
 
             return Tuple.Create(Convert.ToByte(homeTeamDrawRate), Convert.ToByte(awayTeamDrawRate));
-        }
-        public async Task<List<Match>> GetMatchHrefs()
-        {
-            var httpClient = new HttpClient();
-            var html = await httpClient.GetStringAsync(fixturesUrl);
-
-            var htmlDocument = new HtmlDocument();
-            htmlDocument.LoadHtml(html);
-
-
-            var matchContainerDivs = htmlDocument.DocumentNode.Descendants("div")
-                .Where(node => node.GetAttributeValue("class", "")
-                .Equals("flc-match-item-inner")).ToList();
-
-            List<HtmlNode> matchHrefNodes = new List<HtmlNode>();
-            matchContainerDivs.ForEach(x => matchHrefNodes.Add(x.Descendants("a").First()));
-
-            DateTime ukDate = GetUKDate();
-
-            var matchHrefs = new List<Match>();
-            foreach (var matchContainerNode in matchContainerDivs)
-            {
-                var hrefString = matchContainerNode.Descendants("a").First().GetAttributeValue("href", string.Empty);
-                var dateString = hrefString.Substring(16, 10);
-                var matchDate = DateTime.Parse(dateString);
-
-                var dayDiff = Convert.ToByte((matchDate - ukDate).TotalDays);
-                if (dayDiff <= 14)
-                {
-                    var matchHref = new Match(hrefString, dateString, dayDiff);
-                    matchHrefs.Add(matchHref);
-                }
-            }
-
-            return matchHrefs;
         }
 
         private static DateTime GetUKDate()
